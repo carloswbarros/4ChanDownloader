@@ -301,5 +301,13 @@ namespace _4ChanDownloader
             // Save settings
             Properties.Settings.Default.Save();
         }
+
+        /**
+         * Show About Message
+         */
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("4ChanDownloader created by carloswbarros"+Environment.NewLine+ "https://github.com/carloswbarros/4ChanDownloader", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
