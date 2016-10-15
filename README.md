@@ -1,6 +1,8 @@
 # ![alt tag](4ChanDownloader/images/favicon.ico) 4ChanDownloader
 Download boards and threads from 4Chan. (Images/Webms/HTML Page)
 
+New ideas, improvements or bug fix's are always welcome.
+
 # Releases
 [1.0.0 - 4ChanDownloader](https://github.com/carloswbarros/4ChanDownloader/releases/tag/1.0.0)
 
@@ -8,6 +10,7 @@ Download boards and threads from 4Chan. (Images/Webms/HTML Page)
 - Newtonsoft.Json
 
 # TODO
+- [ ] The ability of choosing to minimize normally or to the system tray (taskbar)
 - [ ] Improve download page by adding a custom layout and download thumbnails
 - [ ] Organize the download of boards by creating a small database
 
