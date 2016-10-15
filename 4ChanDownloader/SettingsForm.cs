@@ -48,6 +48,9 @@ namespace _4ChanDownloader
             Properties.Settings.Default.BoardsMaxThreads = (int) nudBoardsMaxThreads.Value;
             Properties.Settings.Default.BoardsMaxThreadsActive = cbBoardsMaxThreadsActivate.Checked;
             Properties.Settings.Default.SaveThreadsUrls = cbSaveThreadsUrls.Checked;
+
+            // Save settings
+            Properties.Settings.Default.Save();
         }
 
         /**

@@ -297,6 +297,9 @@ namespace _4ChanDownloader
             {
                 Properties.Settings.Default.ThreadsUrls.Add(thread.getUrl());
             }
+
+            // Save settings
+            Properties.Settings.Default.Save();
         }
     }
 }
