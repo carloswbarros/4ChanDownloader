@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.topMenu = new System.Windows.Forms.MenuStrip();
             this.appToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,8 +42,6 @@
             this.chBoard = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTotalFiles = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cmThreadsList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnRemoveThread = new System.Windows.Forms.ToolStripMenuItem();
             this.txtThreadUrl = new System.Windows.Forms.TextBox();
             this.btnAddThread = new System.Windows.Forms.Button();
             this.tabBoards = new System.Windows.Forms.TabPage();
@@ -52,13 +51,15 @@
             this.chBThreads = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtBoardUrl = new System.Windows.Forms.TextBox();
             this.btAddBoard = new System.Windows.Forms.Button();
+            this.cmThreadsList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnRemoveThread = new System.Windows.Forms.ToolStripMenuItem();
             this.cbBoardsList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnRemoveBoard = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenu.SuspendLayout();
             this.tabsDownloaders.SuspendLayout();
             this.tabThreads.SuspendLayout();
-            this.cmThreadsList.SuspendLayout();
             this.tabBoards.SuspendLayout();
+            this.cmThreadsList.SuspendLayout();
             this.cbBoardsList.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,20 +166,6 @@
             // 
             this.chTotalFiles.Text = "Files";
             // 
-            // cmThreadsList
-            // 
-            this.cmThreadsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRemoveThread});
-            this.cmThreadsList.Name = "cmThreadsList";
-            this.cmThreadsList.Size = new System.Drawing.Size(118, 26);
-            // 
-            // btnRemoveThread
-            // 
-            this.btnRemoveThread.Name = "btnRemoveThread";
-            this.btnRemoveThread.Size = new System.Drawing.Size(117, 22);
-            this.btnRemoveThread.Text = "Remove";
-            this.btnRemoveThread.Click += new System.EventHandler(this.btnRemoveThread_Click);
-            // 
             // txtThreadUrl
             // 
             this.txtThreadUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -266,6 +253,20 @@
             this.btAddBoard.UseVisualStyleBackColor = true;
             this.btAddBoard.Click += new System.EventHandler(this.btAddBoard_Click);
             // 
+            // cmThreadsList
+            // 
+            this.cmThreadsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnRemoveThread});
+            this.cmThreadsList.Name = "cmThreadsList";
+            this.cmThreadsList.Size = new System.Drawing.Size(118, 26);
+            // 
+            // btnRemoveThread
+            // 
+            this.btnRemoveThread.Name = "btnRemoveThread";
+            this.btnRemoveThread.Size = new System.Drawing.Size(117, 22);
+            this.btnRemoveThread.Text = "Remove";
+            this.btnRemoveThread.Click += new System.EventHandler(this.btnRemoveThread_Click);
+            // 
             // cbBoardsList
             // 
             this.cbBoardsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -276,7 +277,7 @@
             // btnRemoveBoard
             // 
             this.btnRemoveBoard.Name = "btnRemoveBoard";
-            this.btnRemoveBoard.Size = new System.Drawing.Size(152, 22);
+            this.btnRemoveBoard.Size = new System.Drawing.Size(117, 22);
             this.btnRemoveBoard.Text = "Remove";
             this.btnRemoveBoard.Click += new System.EventHandler(this.btnRemoveBoard_Click);
             // 
@@ -287,6 +288,7 @@
             this.ClientSize = new System.Drawing.Size(558, 239);
             this.Controls.Add(this.tabsDownloaders);
             this.Controls.Add(this.topMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.topMenu;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -298,9 +300,9 @@
             this.tabsDownloaders.ResumeLayout(false);
             this.tabThreads.ResumeLayout(false);
             this.tabThreads.PerformLayout();
-            this.cmThreadsList.ResumeLayout(false);
             this.tabBoards.ResumeLayout(false);
             this.tabBoards.PerformLayout();
+            this.cmThreadsList.ResumeLayout(false);
             this.cbBoardsList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
