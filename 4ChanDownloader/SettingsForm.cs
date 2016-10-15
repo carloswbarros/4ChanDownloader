@@ -34,6 +34,9 @@ namespace _4ChanDownloader
             nudBoardsMaxThreads.Value = Properties.Settings.Default.BoardsMaxThreads;
             cbBoardsMaxThreadsActivate.Checked = Properties.Settings.Default.BoardsMaxThreadsActive;
             cbSaveThreadsUrls.Checked = Properties.Settings.Default.SaveThreadsUrls;
+            cbMinimizeToSystemTray.Checked = Properties.Settings.Default.MinimizeToSystemTray;
+            rbSystemTrayDoubleClick.Checked = Properties.Settings.Default.SystemTrayDoubleClick;
+            rbSystemTrayClick.Checked = !Properties.Settings.Default.SystemTrayDoubleClick;
         }
 
         /**
@@ -48,6 +51,8 @@ namespace _4ChanDownloader
             Properties.Settings.Default.BoardsMaxThreads = (int) nudBoardsMaxThreads.Value;
             Properties.Settings.Default.BoardsMaxThreadsActive = cbBoardsMaxThreadsActivate.Checked;
             Properties.Settings.Default.SaveThreadsUrls = cbSaveThreadsUrls.Checked;
+            Properties.Settings.Default.MinimizeToSystemTray = cbMinimizeToSystemTray.Checked;
+            Properties.Settings.Default.SystemTrayDoubleClick = rbSystemTrayDoubleClick.Checked;
 
             // Save settings
             Properties.Settings.Default.Save();
@@ -79,6 +84,23 @@ namespace _4ChanDownloader
             else
             {
                 nudBoardsMaxThreads.Enabled = true;
+            }
+        }
+
+        /**
+         * Minimize to the system tray (Check Changed)
+         */
+        private void cbMinimizeToSystemTray_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbMinimizeToSystemTray.Checked)
+            {
+                rbSystemTrayClick.Enabled = true;
+                rbSystemTrayDoubleClick.Enabled = true;
+            }
+            else
+            {
+                rbSystemTrayClick.Enabled = false;
+                rbSystemTrayDoubleClick.Enabled = false;
             }
         }
     }

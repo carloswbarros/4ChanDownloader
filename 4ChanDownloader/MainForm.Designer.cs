@@ -55,6 +55,7 @@
             this.btnRemoveThread = new System.Windows.Forms.ToolStripMenuItem();
             this.cbBoardsList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnRemoveBoard = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemTrayNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.topMenu.SuspendLayout();
             this.tabsDownloaders.SuspendLayout();
             this.tabThreads.SuspendLayout();
@@ -282,6 +283,13 @@
             this.btnRemoveBoard.Text = "Remove";
             this.btnRemoveBoard.Click += new System.EventHandler(this.btnRemoveBoard_Click);
             // 
+            // systemTrayNotify
+            // 
+            this.systemTrayNotify.Icon = ((System.Drawing.Icon)(resources.GetObject("systemTrayNotify.Icon")));
+            this.systemTrayNotify.Text = "4ChanDownloader";
+            this.systemTrayNotify.MouseClick += new System.Windows.Forms.MouseEventHandler(this.systemTrayNotify_MouseClick);
+            this.systemTrayNotify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.systemTrayNotify_MouseDoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +304,7 @@
             this.Text = "4ChanDownloader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.topMenu.ResumeLayout(false);
             this.topMenu.PerformLayout();
             this.tabsDownloaders.ResumeLayout(false);
@@ -337,6 +346,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnRemoveThread;
         private System.Windows.Forms.ContextMenuStrip cbBoardsList;
         private System.Windows.Forms.ToolStripMenuItem btnRemoveBoard;
+        private System.Windows.Forms.NotifyIcon systemTrayNotify;
     }
 }
 

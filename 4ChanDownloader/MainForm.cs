@@ -309,5 +309,51 @@ namespace _4ChanDownloader
         {
             MessageBox.Show("4ChanDownloader created by carloswbarros"+Environment.NewLine+ "https://github.com/carloswbarros/4ChanDownloader", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        /**
+         * Form Resize
+         */
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            // Hide to the system tray (if enabled)
+            if (Properties.Settings.Default.MinimizeToSystemTray)
+            {
+                if (FormWindowState.Minimized == this.WindowState)
+                {
+                    systemTrayNotify.Visible = true;
+                    this.Hide();
+                }
+                else if (FormWindowState.Normal == this.WindowState)
+                {
+                    systemTrayNotify.Visible = false;
+                }
+            }
+        }
+
+        /**
+         * System Tray Notify Double Click
+         */
+        private void systemTrayNotify_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (Properties.Settings.Default.SystemTrayDoubleClick)
+            {
+                this.Show();
+                systemTrayNotify.Visible = false;
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        /**
+         * System Tray Notify Mouse Click
+         */
+        private void systemTrayNotify_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Properties.Settings.Default.SystemTrayDoubleClick == false)
+            {
+                this.Show();
+                systemTrayNotify.Visible = false;
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

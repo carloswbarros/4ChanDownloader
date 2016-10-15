@@ -31,8 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOutputPath = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbMinimizeToSystemTray = new System.Windows.Forms.CheckBox();
             this.btnChooseOutputPath = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbSaveThreadsUrls = new System.Windows.Forms.CheckBox();
             this.cbThreadsDownloadPage = new System.Windows.Forms.CheckBox();
             this.nudThreadsTimer = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,7 +44,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.nudBoardsTimer = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbSaveThreadsUrls = new System.Windows.Forms.CheckBox();
+            this.rbSystemTrayDoubleClick = new System.Windows.Forms.RadioButton();
+            this.rbSystemTrayClick = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreadsTimer)).BeginInit();
@@ -69,15 +72,31 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbSystemTrayClick);
+            this.groupBox1.Controls.Add(this.rbSystemTrayDoubleClick);
+            this.groupBox1.Controls.Add(this.cbMinimizeToSystemTray);
             this.groupBox1.Controls.Add(this.btnChooseOutputPath);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtOutputPath);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(489, 73);
+            this.groupBox1.Size = new System.Drawing.Size(489, 128);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // cbMinimizeToSystemTray
+            // 
+            this.cbMinimizeToSystemTray.AutoSize = true;
+            this.cbMinimizeToSystemTray.Checked = true;
+            this.cbMinimizeToSystemTray.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMinimizeToSystemTray.Location = new System.Drawing.Point(9, 66);
+            this.cbMinimizeToSystemTray.Name = "cbMinimizeToSystemTray";
+            this.cbMinimizeToSystemTray.Size = new System.Drawing.Size(335, 17);
+            this.cbMinimizeToSystemTray.TabIndex = 3;
+            this.cbMinimizeToSystemTray.Text = "Minimize to system tray, and open by clicking the system tray with ";
+            this.cbMinimizeToSystemTray.UseVisualStyleBackColor = true;
+            this.cbMinimizeToSystemTray.CheckedChanged += new System.EventHandler(this.cbMinimizeToSystemTray_CheckedChanged);
             // 
             // btnChooseOutputPath
             // 
@@ -95,12 +114,24 @@
             this.groupBox2.Controls.Add(this.cbThreadsDownloadPage);
             this.groupBox2.Controls.Add(this.nudThreadsTimer);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 91);
+            this.groupBox2.Location = new System.Drawing.Point(12, 146);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(489, 107);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Threads";
+            // 
+            // cbSaveThreadsUrls
+            // 
+            this.cbSaveThreadsUrls.AutoSize = true;
+            this.cbSaveThreadsUrls.Checked = true;
+            this.cbSaveThreadsUrls.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSaveThreadsUrls.Location = new System.Drawing.Point(12, 85);
+            this.cbSaveThreadsUrls.Name = "cbSaveThreadsUrls";
+            this.cbSaveThreadsUrls.Size = new System.Drawing.Size(81, 17);
+            this.cbSaveThreadsUrls.TabIndex = 5;
+            this.cbSaveThreadsUrls.Text = "Save URLs";
+            this.cbSaveThreadsUrls.UseVisualStyleBackColor = true;
             // 
             // cbThreadsDownloadPage
             // 
@@ -142,7 +173,7 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.nudBoardsTimer);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(12, 204);
+            this.groupBox3.Location = new System.Drawing.Point(12, 259);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(489, 107);
             this.groupBox3.TabIndex = 4;
@@ -204,23 +235,33 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Timer (seconds):";
             // 
-            // cbSaveThreadsUrls
+            // rbSystemTrayDoubleClick
             // 
-            this.cbSaveThreadsUrls.AutoSize = true;
-            this.cbSaveThreadsUrls.Checked = true;
-            this.cbSaveThreadsUrls.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbSaveThreadsUrls.Location = new System.Drawing.Point(12, 85);
-            this.cbSaveThreadsUrls.Name = "cbSaveThreadsUrls";
-            this.cbSaveThreadsUrls.Size = new System.Drawing.Size(81, 17);
-            this.cbSaveThreadsUrls.TabIndex = 5;
-            this.cbSaveThreadsUrls.Text = "Save URLs";
-            this.cbSaveThreadsUrls.UseVisualStyleBackColor = true;
+            this.rbSystemTrayDoubleClick.AutoSize = true;
+            this.rbSystemTrayDoubleClick.Checked = true;
+            this.rbSystemTrayDoubleClick.Location = new System.Drawing.Point(338, 66);
+            this.rbSystemTrayDoubleClick.Name = "rbSystemTrayDoubleClick";
+            this.rbSystemTrayDoubleClick.Size = new System.Drawing.Size(85, 17);
+            this.rbSystemTrayDoubleClick.TabIndex = 4;
+            this.rbSystemTrayDoubleClick.TabStop = true;
+            this.rbSystemTrayDoubleClick.Text = "Double Click";
+            this.rbSystemTrayDoubleClick.UseVisualStyleBackColor = true;
+            // 
+            // rbSystemTrayClick
+            // 
+            this.rbSystemTrayClick.AutoSize = true;
+            this.rbSystemTrayClick.Location = new System.Drawing.Point(427, 66);
+            this.rbSystemTrayClick.Name = "rbSystemTrayClick";
+            this.rbSystemTrayClick.Size = new System.Drawing.Size(48, 17);
+            this.rbSystemTrayClick.TabIndex = 5;
+            this.rbSystemTrayClick.Text = "Click";
+            this.rbSystemTrayClick.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 321);
+            this.ClientSize = new System.Drawing.Size(514, 426);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -261,5 +302,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox cbBoardsMaxThreadsActivate;
         private System.Windows.Forms.CheckBox cbSaveThreadsUrls;
+        private System.Windows.Forms.CheckBox cbMinimizeToSystemTray;
+        private System.Windows.Forms.RadioButton rbSystemTrayClick;
+        private System.Windows.Forms.RadioButton rbSystemTrayDoubleClick;
     }
 }

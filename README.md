@@ -10,7 +10,7 @@ New ideas, improvements or bug fix's are always welcome.
 - Newtonsoft.Json
 
 # TODO
-- [ ] The ability of choosing to minimize normally or to the system tray (taskbar)
+- [x] The ability of choosing to minimize normally or to the system tray (taskbar)
 - [ ] Improve download page by adding a custom layout and download thumbnails
 - [ ] Organize the download of boards by creating a small database
 
