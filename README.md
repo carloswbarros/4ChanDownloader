@@ -8,8 +8,8 @@ New ideas, improvements or bug fix's are always welcome.
 - Download boards
 - Check for changes on the threads and boards
 - Ability to save the URL's when the application is closed
-- Many more options
 - Proxy support (coming soon)
+- Easy to customize and use
 
 # Releases
 [1.0.0 - 4ChanDownloader](https://github.com/carloswbarros/4ChanDownloader/releases/tag/1.0.0)
