@@ -25,6 +25,7 @@ namespace _4ChanDownloader
         private List<string> downloadedPosts;
         private System.Timers.Timer downloadTimer;
         private int totalFiles;
+        private ListViewItem listViewItem;
 
         public Thread(MainForm gui, string url)
         {
@@ -36,6 +37,7 @@ namespace _4ChanDownloader
             this.fetchUrlInformation();
             this.downloadedPosts = new List<string>();
             this.totalFiles = 0;
+            this.listViewItem = null;
 
             downloadTimer = new System.Timers.Timer();
             downloadTimer.Elapsed += new ElapsedEventHandler(DownloadTimerEvent);
@@ -137,7 +139,12 @@ namespace _4ChanDownloader
         {
             if (!this.isUrlValid()) return false;
 
-            gui.addThread(this, id, board, title, 0);
+            this.listViewItem = gui.addThread(this, id, board, title, 0);
+
+            if (this.listViewItem == null)
+            {
+                return false;
+            }
 
             downloadTimer.Enabled = true;
 
@@ -265,6 +272,14 @@ namespace _4ChanDownloader
         public string getUrl()
         {
             return this.url;
+        }
+
+        /**
+         * Get ListViewItem
+         */
+        public ListViewItem getListViewItem()
+        {
+            return this.listViewItem;
         }
     }
 }

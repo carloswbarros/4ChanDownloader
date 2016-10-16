@@ -50,8 +50,14 @@ namespace _4ChanDownloader
         /**
          * Add Thread to the List
          */
-        public void addThread(Thread thread, string id, string board, string title, int files)
+        public ListViewItem addThread(Thread thread, string id, string board, string title, int files)
         {
+            // Verify if already exists
+            if (activeThreads.Contains(thread) || listThreads.Items.Find(id, false).Count() >= 1)
+            {
+                return null;
+            }
+
             activeThreads.Add(thread);
             ListViewItem item = new ListViewItem(new string[]{
                 id,
@@ -73,13 +79,21 @@ namespace _4ChanDownloader
             {
                 listThreads.Items.Add(item);
             }
+
+            return item;
         }
 
         /**
          * Add Board to the List
          */
-        public void addBoard(Board board, string boardTag, string title, int threads)
+        public ListViewItem addBoard(Board board, string boardTag, string title, int threads)
         {
+            // Verify if already exists
+            if (activeBoards.Contains(board) || listBoards.Items.Find(boardTag, false).Count() >= 1)
+            {
+                return null;
+            }
+
             activeBoards.Add(board);
             ListViewItem item = new ListViewItem(new string[]{
                 boardTag,
@@ -99,6 +113,8 @@ namespace _4ChanDownloader
             {
                 listBoards.Items.Add(item);
             }
+
+            return item;
         }
 
         /**
@@ -110,15 +126,22 @@ namespace _4ChanDownloader
             {
                 listThreads.Invoke(new MethodInvoker(delegate
                 {
-                    ListViewItem item = listThreads.Items.Find(id, false)[0];
-                    item.SubItems[2].Text = title;
-
+                    ListViewItem[] items = listThreads.Items.Find(id, false);
+                    if (items.Count() > 0)
+                    {
+                        ListViewItem item = items[0];
+                        item.SubItems[2].Text = title;
+                    }
                 }));
             }
             else
             {
-                ListViewItem item = listThreads.Items.Find(id, false)[0];
-                item.SubItems[2].Text = title;
+                ListViewItem[] items = listThreads.Items.Find(id, false);
+                if (items.Count() > 0)
+                {
+                    ListViewItem item = items[0];
+                    item.SubItems[2].Text = title;
+                }
             }
         }
 
@@ -131,15 +154,22 @@ namespace _4ChanDownloader
             {
                 listThreads.Invoke(new MethodInvoker(delegate
                 {
-                    ListViewItem item = listThreads.Items.Find(id, false)[0];
-                    item.SubItems[3].Text = totalFiles.ToString();
-
+                    ListViewItem[] items = listThreads.Items.Find(id, false);
+                    if (items.Count() > 0)
+                    {
+                        ListViewItem item = items[0];
+                        item.SubItems[3].Text = totalFiles.ToString();
+                    }
                 }));
             }
             else
             {
-                ListViewItem item = listThreads.Items.Find(id, false)[0];
-                item.SubItems[3].Text = totalFiles.ToString();
+                ListViewItem[] items = listThreads.Items.Find(id, false);
+                if (items.Count() > 0)
+                {
+                    ListViewItem item = items[0];
+                    item.SubItems[3].Text = totalFiles.ToString();
+                }
             }
         }
 
@@ -242,19 +272,35 @@ namespace _4ChanDownloader
          */
         public void removeThread(Thread thread, ListViewItem item = null)
         {
+            thread.stop();
+
             if (item == null)
             {
-                if (listThreads.InvokeRequired)
+                if (thread.getListViewItem() == null)
                 {
-                    listThreads.Invoke(new MethodInvoker(delegate
+                    if (listThreads.InvokeRequired)
                     {
-                        item = listThreads.Items.Find(thread.getId(), false)[0];
-
-                    }));
+                        listThreads.Invoke(new MethodInvoker(delegate
+                        {
+                            ListViewItem[] items = listThreads.Items.Find(thread.getId(), false);
+                            if (items.Count() > 0)
+                            {
+                                item = items[0];
+                            }
+                        }));
+                    }
+                    else
+                    {
+                        ListViewItem[] items = listThreads.Items.Find(thread.getId(), false);
+                        if (items.Count() > 0)
+                        {
+                            item = items[0];
+                        }
+                    }
                 }
                 else
                 {
-                    item = listThreads.Items.Find(thread.getId(), false)[0];
+                    item = thread.getListViewItem();
                 }
             }
 
@@ -271,7 +317,6 @@ namespace _4ChanDownloader
                 item.Remove();
             }
             
-            thread.stop();
             this.activeThreads.Remove(thread);
             thread = null;
         }

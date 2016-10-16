@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Forms;
 
 namespace _4ChanDownloader
 {
@@ -17,12 +18,14 @@ namespace _4ChanDownloader
         private string boardTag;
         private List<Thread> activeThreads;
         private System.Timers.Timer downloadTimer;
+        private ListViewItem listViewItem;
 
         public Board(MainForm gui, string boardTag)
         {
             this.gui = gui;
             this.boardTag = boardTag;
             this.activeThreads = new List<Thread>();
+            this.listViewItem = null;
 
             downloadTimer = new System.Timers.Timer();
             downloadTimer.Elapsed += new ElapsedEventHandler(DownloadTimerEvent);
@@ -74,7 +77,12 @@ namespace _4ChanDownloader
          */
         public bool watch()
         {
-            this.gui.addBoard(this, this.boardTag, this.boardTag, 0);
+            this.listViewItem = this.gui.addBoard(this, this.boardTag, this.boardTag, 0);
+
+            if (this.listViewItem == null)
+            {
+                return false;
+            }
 
             downloadTimer.Enabled = true;
 
