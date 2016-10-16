@@ -161,8 +161,16 @@ namespace _4ChanDownloader
                 {
                     if (webResponse.StatusCode == HttpStatusCode.NotFound)
                     {
-                        gui.updateThreadColor(this.id, Color.Red);
                         downloadTimer.Enabled = false;
+
+                        if (Properties.Settings.Default.Remove404Thread)
+                        {
+                            gui.removeThread(this);
+                        }
+                        else
+                        {
+                            gui.updateThreadColor(this.id, Color.Red);
+                        }
                     }
                 }
             }

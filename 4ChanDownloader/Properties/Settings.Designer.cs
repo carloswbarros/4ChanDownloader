@@ -153,5 +153,17 @@ namespace _4ChanDownloader.Properties {
                 this["MinimizeToSystemTray"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Remove404Thread {
+            get {
+                return ((bool)(this["Remove404Thread"]));
+            }
+            set {
+                this["Remove404Thread"] = value;
+            }
+        }
     }
 }

@@ -31,6 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOutputPath = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSystemTrayClick = new System.Windows.Forms.RadioButton();
+            this.rbSystemTrayDoubleClick = new System.Windows.Forms.RadioButton();
             this.cbMinimizeToSystemTray = new System.Windows.Forms.CheckBox();
             this.btnChooseOutputPath = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -44,8 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.nudBoardsTimer = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.rbSystemTrayDoubleClick = new System.Windows.Forms.RadioButton();
-            this.rbSystemTrayClick = new System.Windows.Forms.RadioButton();
+            this.cbRemove404Thread = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreadsTimer)).BeginInit();
@@ -80,10 +81,32 @@
             this.groupBox1.Controls.Add(this.txtOutputPath);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(489, 128);
+            this.groupBox1.Size = new System.Drawing.Size(489, 95);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // rbSystemTrayClick
+            // 
+            this.rbSystemTrayClick.AutoSize = true;
+            this.rbSystemTrayClick.Location = new System.Drawing.Point(427, 66);
+            this.rbSystemTrayClick.Name = "rbSystemTrayClick";
+            this.rbSystemTrayClick.Size = new System.Drawing.Size(48, 17);
+            this.rbSystemTrayClick.TabIndex = 5;
+            this.rbSystemTrayClick.Text = "Click";
+            this.rbSystemTrayClick.UseVisualStyleBackColor = true;
+            // 
+            // rbSystemTrayDoubleClick
+            // 
+            this.rbSystemTrayDoubleClick.AutoSize = true;
+            this.rbSystemTrayDoubleClick.Checked = true;
+            this.rbSystemTrayDoubleClick.Location = new System.Drawing.Point(338, 66);
+            this.rbSystemTrayDoubleClick.Name = "rbSystemTrayDoubleClick";
+            this.rbSystemTrayDoubleClick.Size = new System.Drawing.Size(85, 17);
+            this.rbSystemTrayDoubleClick.TabIndex = 4;
+            this.rbSystemTrayDoubleClick.TabStop = true;
+            this.rbSystemTrayDoubleClick.Text = "Double Click";
+            this.rbSystemTrayDoubleClick.UseVisualStyleBackColor = true;
             // 
             // cbMinimizeToSystemTray
             // 
@@ -110,13 +133,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbRemove404Thread);
             this.groupBox2.Controls.Add(this.cbSaveThreadsUrls);
             this.groupBox2.Controls.Add(this.cbThreadsDownloadPage);
             this.groupBox2.Controls.Add(this.nudThreadsTimer);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 146);
+            this.groupBox2.Location = new System.Drawing.Point(12, 113);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(489, 107);
+            this.groupBox2.Size = new System.Drawing.Size(489, 130);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Threads";
@@ -173,7 +197,7 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.nudBoardsTimer);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(12, 259);
+            this.groupBox3.Location = new System.Drawing.Point(12, 249);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(489, 107);
             this.groupBox3.TabIndex = 4;
@@ -235,33 +259,22 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Timer (seconds):";
             // 
-            // rbSystemTrayDoubleClick
+            // cbRemove404Thread
             // 
-            this.rbSystemTrayDoubleClick.AutoSize = true;
-            this.rbSystemTrayDoubleClick.Checked = true;
-            this.rbSystemTrayDoubleClick.Location = new System.Drawing.Point(338, 66);
-            this.rbSystemTrayDoubleClick.Name = "rbSystemTrayDoubleClick";
-            this.rbSystemTrayDoubleClick.Size = new System.Drawing.Size(85, 17);
-            this.rbSystemTrayDoubleClick.TabIndex = 4;
-            this.rbSystemTrayDoubleClick.TabStop = true;
-            this.rbSystemTrayDoubleClick.Text = "Double Click";
-            this.rbSystemTrayDoubleClick.UseVisualStyleBackColor = true;
-            // 
-            // rbSystemTrayClick
-            // 
-            this.rbSystemTrayClick.AutoSize = true;
-            this.rbSystemTrayClick.Location = new System.Drawing.Point(427, 66);
-            this.rbSystemTrayClick.Name = "rbSystemTrayClick";
-            this.rbSystemTrayClick.Size = new System.Drawing.Size(48, 17);
-            this.rbSystemTrayClick.TabIndex = 5;
-            this.rbSystemTrayClick.Text = "Click";
-            this.rbSystemTrayClick.UseVisualStyleBackColor = true;
+            this.cbRemove404Thread.AutoSize = true;
+            this.cbRemove404Thread.Location = new System.Drawing.Point(12, 108);
+            this.cbRemove404Thread.Name = "cbRemove404Thread";
+            this.cbRemove404Thread.Size = new System.Drawing.Size(461, 17);
+            this.cbRemove404Thread.TabIndex = 6;
+            this.cbRemove404Thread.Text = "Auto remove 404 thread from list (if disabled the background of the thread will c" +
+    "hange to red)";
+            this.cbRemove404Thread.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 426);
+            this.ClientSize = new System.Drawing.Size(514, 367);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -305,5 +318,6 @@
         private System.Windows.Forms.CheckBox cbMinimizeToSystemTray;
         private System.Windows.Forms.RadioButton rbSystemTrayClick;
         private System.Windows.Forms.RadioButton rbSystemTrayDoubleClick;
+        private System.Windows.Forms.CheckBox cbRemove404Thread;
     }
 }

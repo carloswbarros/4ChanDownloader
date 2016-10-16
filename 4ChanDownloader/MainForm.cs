@@ -152,15 +152,22 @@ namespace _4ChanDownloader
             {
                 listThreads.Invoke(new MethodInvoker(delegate
                 {
-                    ListViewItem item = listThreads.Items.Find(id, false)[0];
-                    item.BackColor = color;
-
+                    ListViewItem[] items = listThreads.Items.Find(id, false);
+                    if (items.Count() > 0)
+                    {
+                        ListViewItem item = items[0];
+                        item.BackColor = color;
+                    }
                 }));
             }
             else
             {
-                ListViewItem item = listThreads.Items.Find(id, false)[0];
-                item.BackColor = color;
+                ListViewItem[] items = listThreads.Items.Find(id, false);
+                if (items.Count() > 0)
+                {
+                    ListViewItem item = items[0];
+                    item.BackColor = color;
+                }
             }
         }
 
@@ -224,12 +231,49 @@ namespace _4ChanDownloader
                 foreach (ListViewItem threadItem in listThreads.SelectedItems)
                 {
                     Thread thread = activeThreads.Find(t => t.getId() == threadItem.Name);
-                    threadItem.Remove();
-                    thread.stop();
-                    this.activeThreads.Remove(thread);
-                    thread = null;
+                    this.removeThread(thread, threadItem);
+                    
                 }
             }
+        }
+
+        /**
+         * Remove Thread From Active List
+         */
+        public void removeThread(Thread thread, ListViewItem item = null)
+        {
+            if (item == null)
+            {
+                if (listThreads.InvokeRequired)
+                {
+                    listThreads.Invoke(new MethodInvoker(delegate
+                    {
+                        item = listThreads.Items.Find(thread.getId(), false)[0];
+
+                    }));
+                }
+                else
+                {
+                    item = listThreads.Items.Find(thread.getId(), false)[0];
+                }
+            }
+
+            if (listThreads.InvokeRequired)
+            {
+                listThreads.Invoke(new MethodInvoker(delegate
+                {
+                    item.Remove();
+
+                }));
+            }
+            else
+            {
+                item.Remove();
+            }
+            
+            thread.stop();
+            this.activeThreads.Remove(thread);
+            thread = null;
         }
 
         /**

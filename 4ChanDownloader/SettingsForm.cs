@@ -37,6 +37,7 @@ namespace _4ChanDownloader
             cbMinimizeToSystemTray.Checked = Properties.Settings.Default.MinimizeToSystemTray;
             rbSystemTrayDoubleClick.Checked = Properties.Settings.Default.SystemTrayDoubleClick;
             rbSystemTrayClick.Checked = !Properties.Settings.Default.SystemTrayDoubleClick;
+            cbRemove404Thread.Checked = Properties.Settings.Default.Remove404Thread;
         }
 
         /**
@@ -53,6 +54,7 @@ namespace _4ChanDownloader
             Properties.Settings.Default.SaveThreadsUrls = cbSaveThreadsUrls.Checked;
             Properties.Settings.Default.MinimizeToSystemTray = cbMinimizeToSystemTray.Checked;
             Properties.Settings.Default.SystemTrayDoubleClick = rbSystemTrayDoubleClick.Checked;
+            Properties.Settings.Default.Remove404Thread = cbRemove404Thread.Checked;
 
             // Save settings
             Properties.Settings.Default.Save();
