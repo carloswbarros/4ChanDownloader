@@ -11,7 +11,7 @@ New ideas, improvements or bug fix's are always welcome.
 
 # TODO
 - [x] The ability of choosing to minimize normally or to the system tray (taskbar)
-- [ ] Improve download page by adding a custom layout and download thumbnails
+- [x] Improve download page by downloading the thumbnails and change the urls to work local
 - [ ] Organize the download of boards by creating a small database
 
 # License

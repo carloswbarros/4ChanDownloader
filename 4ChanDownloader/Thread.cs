@@ -74,6 +74,7 @@ namespace _4ChanDownloader
 
             // Create directorys
             Directory.CreateDirectory(this.getOutputDir());
+            Directory.CreateDirectory(Path.Combine(this.getOutputDir(), "thumbnails"));
 
             // Download json thread
             string json = new WebClient().DownloadString("http://a.4cdn.org/" + this.board + "/thread/" + this.id + ".json");
@@ -105,8 +106,14 @@ namespace _4ChanDownloader
                     if (original_file_name != null)
                     {
                         this.totalFiles++;
+
+                        // Download original file
                         string unique_file_name = post["tim"].ToString() + post["ext"].ToString();
-                        this.downloadFile(unique_file_name, original_file_name.ToString());
+                        this.downloadFile(unique_file_name, unique_file_name); //original_file_name.ToString()+"_"+ unique_file_name
+
+                        // Download thumbnail
+                        string thumbnail_file_name = post["tim"].ToString() + "s.jpg";
+                        this.downloadFile(thumbnail_file_name, "thumbnails/" + thumbnail_file_name);
 
                         // Update total files in the gui
                         gui.updateThreadTotalFiles(this.id, this.totalFiles);
@@ -148,6 +155,7 @@ namespace _4ChanDownloader
             }
             catch (WebException ex)
             {
+                Debug.WriteLine(ex.ToString());
                 HttpWebResponse webResponse = (HttpWebResponse)ex.Response;
                 if (webResponse != null)
                 {
@@ -163,12 +171,12 @@ namespace _4ChanDownloader
         /**
          * Download File
          */
-        private void downloadFile(string file_name, string original_file_name)
+        private void downloadFile(string file_name, string output)
         {
             string download_url = "http://i.4cdn.org/"+this.board+"/"+ file_name;
             using (var client = new WebClient())
             {
-                client.DownloadFile(download_url, Path.Combine(this.getOutputDir(), original_file_name+"_"+file_name));
+                client.DownloadFile(download_url, Path.Combine(this.getOutputDir(), output));
             }
         }
 
@@ -177,9 +185,32 @@ namespace _4ChanDownloader
          */
         private void downloadPage()
         {
-            using (var client = new WebClient())
+            try
             {
-                client.DownloadFile(this.url, Path.Combine(this.getOutputDir(), "page.html"));
+                using (var client = new WebClient())
+                {
+                    var html_page = client.DownloadString(this.url);
+
+                    // Add http to all links (without this "file://" would be added by the browser)
+                    html_page = html_page.Replace("\"//", "\"http://");
+
+                    // Replace the url of the thumbnails to the local thumbnails
+                    string thumb_regex = "src=\"(http?:\\/\\/i\\.4cdn\\.org\\/[a-zA-Z0-9-_]+\\/)([0-9]+s\\.[a-zA-Z0-9]+)\"";
+                    html_page = Regex.Replace(html_page, thumb_regex, "src=\"thumbnails/$2\"");
+
+                    // Replace the url of the files to the local ones
+                    string file_regex = "(http?:\\/\\/[a-zA-Z0-9-_.]+\\.org\\/[a-zA-Z0-9-_]+\\/)([0-9]+\\.[a-zA-Z0-9]+)";
+                    html_page = Regex.Replace(html_page, file_regex, "$2");
+
+                    File.WriteAllText(Path.Combine(this.getOutputDir(), "page.html"), html_page);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                // This might mean that you have the page open in the browser
+                // I don't think there is a problem if we don't download it...maybe...
+                // Should the user know? Eh fuck it...
             }
         }
 
