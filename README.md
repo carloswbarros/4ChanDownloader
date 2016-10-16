@@ -3,6 +3,14 @@ Download boards and threads from 4Chan. (Images/Webms/HTML Page)
 
 New ideas, improvements or bug fix's are always welcome.
 
+# Features
+- Download threads (all files and page)
+- Download boards
+- Check for changes on the threads and boards
+- Ability to save the URL's when the application is closed
+- Many more options
+- Proxy support (coming soon)
+
 # Releases
 [1.0.0 - 4ChanDownloader](https://github.com/carloswbarros/4ChanDownloader/releases/tag/1.0.0)
 
@@ -12,6 +20,7 @@ New ideas, improvements or bug fix's are always welcome.
 # TODO
 - [x] The ability of choosing to minimize normally or to the system tray (taskbar)
 - [x] Improve download page by downloading the thumbnails and change the urls to work local
+- [ ] Proxy support
 - [ ] Organize the download of boards by creating a small database
 
 # License
