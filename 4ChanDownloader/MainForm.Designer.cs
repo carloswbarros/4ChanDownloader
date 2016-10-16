@@ -143,9 +143,9 @@
             this.chTotalFiles});
             this.listThreads.FullRowSelect = true;
             this.listThreads.GridLines = true;
-            this.listThreads.Location = new System.Drawing.Point(9, 33);
+            this.listThreads.Location = new System.Drawing.Point(8, 33);
             this.listThreads.Name = "listThreads";
-            this.listThreads.Size = new System.Drawing.Size(533, 147);
+            this.listThreads.Size = new System.Drawing.Size(534, 147);
             this.listThreads.TabIndex = 2;
             this.listThreads.UseCompatibleStateImageBehavior = false;
             this.listThreads.View = System.Windows.Forms.View.Details;
@@ -212,9 +212,9 @@
             this.chBThreads});
             this.listBoards.FullRowSelect = true;
             this.listBoards.GridLines = true;
-            this.listBoards.Location = new System.Drawing.Point(6, 31);
+            this.listBoards.Location = new System.Drawing.Point(8, 33);
             this.listBoards.Name = "listBoards";
-            this.listBoards.Size = new System.Drawing.Size(536, 147);
+            this.listBoards.Size = new System.Drawing.Size(534, 147);
             this.listBoards.TabIndex = 4;
             this.listBoards.UseCompatibleStateImageBehavior = false;
             this.listBoards.View = System.Windows.Forms.View.Details;
@@ -239,9 +239,9 @@
             // 
             this.txtBoardUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoardUrl.Location = new System.Drawing.Point(6, 6);
+            this.txtBoardUrl.Location = new System.Drawing.Point(8, 6);
             this.txtBoardUrl.Name = "txtBoardUrl";
-            this.txtBoardUrl.Size = new System.Drawing.Size(455, 20);
+            this.txtBoardUrl.Size = new System.Drawing.Size(453, 20);
             this.txtBoardUrl.TabIndex = 3;
             // 
             // btAddBoard
