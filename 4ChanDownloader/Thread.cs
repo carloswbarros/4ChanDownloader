@@ -173,6 +173,11 @@ namespace _4ChanDownloader
          */
         private void downloadFile(string file_name, string output)
         {
+            if (File.Exists(Path.Combine(this.getOutputDir(), output)))
+            {
+                return;
+            }
+
             string download_url = "http://i.4cdn.org/"+this.board+"/"+ file_name;
             using (var client = new WebClient())
             {
