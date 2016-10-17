@@ -40,7 +40,12 @@ namespace _4ChanDownloader
         {
             List<Thread> rThreads = new List<Thread>();
 
-            string json = new WebClient().DownloadString("http://a.4cdn.org/" + this.boardTag + "/catalog.json");
+            WebClient client = new WebClient();
+            if (Properties.Settings.Default.UseProxy)
+            {
+                client.Proxy = Helper.getProxy();
+            }
+            string json = client.DownloadString("http://a.4cdn.org/" + this.boardTag + "/catalog.json");
             JArray pages = JArray.Parse(json);
 
             int max_threads = Properties.Settings.Default.BoardsMaxThreads;

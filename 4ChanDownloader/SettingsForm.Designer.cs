@@ -36,6 +36,7 @@
             this.cbMinimizeToSystemTray = new System.Windows.Forms.CheckBox();
             this.btnChooseOutputPath = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbRemove404Thread = new System.Windows.Forms.CheckBox();
             this.cbSaveThreadsUrls = new System.Windows.Forms.CheckBox();
             this.cbThreadsDownloadPage = new System.Windows.Forms.CheckBox();
             this.nudThreadsTimer = new System.Windows.Forms.NumericUpDown();
@@ -46,13 +47,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.nudBoardsTimer = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbRemove404Thread = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtProxyPassword = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtProxyUsername = new System.Windows.Forms.TextBox();
+            this.cbProxyUseCredentials = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtProxyServer = new System.Windows.Forms.TextBox();
+            this.cbUseProxy = new System.Windows.Forms.CheckBox();
+            this.btTestMyIpWithProxy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudThreadsTimer)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBoardsMaxThreads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBoardsTimer)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -144,6 +155,17 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Threads";
+            // 
+            // cbRemove404Thread
+            // 
+            this.cbRemove404Thread.AutoSize = true;
+            this.cbRemove404Thread.Location = new System.Drawing.Point(12, 108);
+            this.cbRemove404Thread.Name = "cbRemove404Thread";
+            this.cbRemove404Thread.Size = new System.Drawing.Size(461, 17);
+            this.cbRemove404Thread.TabIndex = 6;
+            this.cbRemove404Thread.Text = "Auto remove 404 thread from list (if disabled the background of the thread will c" +
+    "hange to red)";
+            this.cbRemove404Thread.UseVisualStyleBackColor = true;
             // 
             // cbSaveThreadsUrls
             // 
@@ -259,22 +281,114 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Timer (seconds):";
             // 
-            // cbRemove404Thread
+            // groupBox4
             // 
-            this.cbRemove404Thread.AutoSize = true;
-            this.cbRemove404Thread.Location = new System.Drawing.Point(12, 108);
-            this.cbRemove404Thread.Name = "cbRemove404Thread";
-            this.cbRemove404Thread.Size = new System.Drawing.Size(461, 17);
-            this.cbRemove404Thread.TabIndex = 6;
-            this.cbRemove404Thread.Text = "Auto remove 404 thread from list (if disabled the background of the thread will c" +
-    "hange to red)";
-            this.cbRemove404Thread.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.btTestMyIpWithProxy);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.txtProxyPassword);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.txtProxyUsername);
+            this.groupBox4.Controls.Add(this.cbProxyUseCredentials);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.txtProxyServer);
+            this.groupBox4.Controls.Add(this.cbUseProxy);
+            this.groupBox4.Location = new System.Drawing.Point(12, 362);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(490, 149);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Proxy";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(250, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Password:";
+            // 
+            // txtProxyPassword
+            // 
+            this.txtProxyPassword.Location = new System.Drawing.Point(253, 118);
+            this.txtProxyPassword.Name = "txtProxyPassword";
+            this.txtProxyPassword.PasswordChar = '*';
+            this.txtProxyPassword.Size = new System.Drawing.Size(230, 20);
+            this.txtProxyPassword.TabIndex = 6;
+            this.txtProxyPassword.Text = "secret";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 102);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Username:";
+            // 
+            // txtProxyUsername
+            // 
+            this.txtProxyUsername.Location = new System.Drawing.Point(12, 118);
+            this.txtProxyUsername.Name = "txtProxyUsername";
+            this.txtProxyUsername.Size = new System.Drawing.Size(227, 20);
+            this.txtProxyUsername.TabIndex = 4;
+            this.txtProxyUsername.Text = "example";
+            // 
+            // cbProxyUseCredentials
+            // 
+            this.cbProxyUseCredentials.AutoSize = true;
+            this.cbProxyUseCredentials.Location = new System.Drawing.Point(12, 82);
+            this.cbProxyUseCredentials.Name = "cbProxyUseCredentials";
+            this.cbProxyUseCredentials.Size = new System.Drawing.Size(99, 17);
+            this.cbProxyUseCredentials.TabIndex = 3;
+            this.cbProxyUseCredentials.Text = "Use credentials";
+            this.cbProxyUseCredentials.UseVisualStyleBackColor = true;
+            this.cbProxyUseCredentials.CheckedChanged += new System.EventHandler(this.cbProxyUseCredentials_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Server:";
+            // 
+            // txtProxyServer
+            // 
+            this.txtProxyServer.Location = new System.Drawing.Point(12, 56);
+            this.txtProxyServer.Name = "txtProxyServer";
+            this.txtProxyServer.Size = new System.Drawing.Size(471, 20);
+            this.txtProxyServer.TabIndex = 1;
+            this.txtProxyServer.Text = "127.0.0.1:8080";
+            // 
+            // cbUseProxy
+            // 
+            this.cbUseProxy.AutoSize = true;
+            this.cbUseProxy.Location = new System.Drawing.Point(12, 20);
+            this.cbUseProxy.Name = "cbUseProxy";
+            this.cbUseProxy.Size = new System.Drawing.Size(73, 17);
+            this.cbUseProxy.TabIndex = 0;
+            this.cbUseProxy.Text = "Use proxy";
+            this.cbUseProxy.UseVisualStyleBackColor = true;
+            this.cbUseProxy.CheckedChanged += new System.EventHandler(this.cbUseProxy_CheckedChanged);
+            // 
+            // btTestMyIpWithProxy
+            // 
+            this.btTestMyIpWithProxy.Location = new System.Drawing.Point(338, 16);
+            this.btTestMyIpWithProxy.Name = "btTestMyIpWithProxy";
+            this.btTestMyIpWithProxy.Size = new System.Drawing.Size(145, 23);
+            this.btTestMyIpWithProxy.TabIndex = 8;
+            this.btTestMyIpWithProxy.Text = "Test my ip with the proxy";
+            this.btTestMyIpWithProxy.UseVisualStyleBackColor = true;
+            this.btTestMyIpWithProxy.Click += new System.EventHandler(this.btTestMyIpWithProxy_Click);
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 367);
+            this.ClientSize = new System.Drawing.Size(514, 523);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -294,6 +408,8 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudBoardsMaxThreads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBoardsTimer)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +435,15 @@
         private System.Windows.Forms.RadioButton rbSystemTrayClick;
         private System.Windows.Forms.RadioButton rbSystemTrayDoubleClick;
         private System.Windows.Forms.CheckBox cbRemove404Thread;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox cbUseProxy;
+        private System.Windows.Forms.CheckBox cbProxyUseCredentials;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtProxyServer;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtProxyPassword;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtProxyUsername;
+        private System.Windows.Forms.Button btTestMyIpWithProxy;
     }
 }

@@ -38,6 +38,16 @@ namespace _4ChanDownloader
             rbSystemTrayDoubleClick.Checked = Properties.Settings.Default.SystemTrayDoubleClick;
             rbSystemTrayClick.Checked = !Properties.Settings.Default.SystemTrayDoubleClick;
             cbRemove404Thread.Checked = Properties.Settings.Default.Remove404Thread;
+            cbUseProxy.Checked = Properties.Settings.Default.UseProxy;
+            txtProxyServer.Text = Properties.Settings.Default.ProxyServer;
+            cbProxyUseCredentials.Checked = Properties.Settings.Default.ProxyUseCredentials;
+            txtProxyUsername.Text = Properties.Settings.Default.ProxyUsername;
+            txtProxyPassword.Text = Properties.Settings.Default.ProxyPassword;
+
+            cbBoardsMaxThreadsActivate_CheckedChanged(null, null);
+            cbMinimizeToSystemTray_CheckedChanged(null, null);
+            cbUseProxy_CheckedChanged(null, null);
+            cbProxyUseCredentials_CheckedChanged(null, null);
         }
 
         /**
@@ -55,6 +65,11 @@ namespace _4ChanDownloader
             Properties.Settings.Default.MinimizeToSystemTray = cbMinimizeToSystemTray.Checked;
             Properties.Settings.Default.SystemTrayDoubleClick = rbSystemTrayDoubleClick.Checked;
             Properties.Settings.Default.Remove404Thread = cbRemove404Thread.Checked;
+            Properties.Settings.Default.UseProxy = cbUseProxy.Checked;
+            Properties.Settings.Default.ProxyServer = txtProxyServer.Text;
+            Properties.Settings.Default.ProxyUseCredentials = cbProxyUseCredentials.Checked;
+            Properties.Settings.Default.ProxyUsername = txtProxyUsername.Text;
+            Properties.Settings.Default.ProxyPassword = txtProxyPassword.Text;
 
             // Save settings
             Properties.Settings.Default.Save();
@@ -103,6 +118,72 @@ namespace _4ChanDownloader
             {
                 rbSystemTrayClick.Enabled = false;
                 rbSystemTrayDoubleClick.Enabled = false;
+            }
+        }
+
+        /**
+         * Use Proxy (Check Changed)
+         */
+        private void cbUseProxy_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbUseProxy.Checked)
+            {
+                txtProxyServer.Enabled = true;
+                cbProxyUseCredentials.Enabled = true;
+                txtProxyUsername.Enabled = true;
+                txtProxyPassword.Enabled = true;
+            }
+            else
+            {
+                txtProxyServer.Enabled = false;
+                cbProxyUseCredentials.Enabled = false;
+                txtProxyUsername.Enabled = false;
+                txtProxyPassword.Enabled = false;
+            }
+
+            cbProxyUseCredentials_CheckedChanged(null, null);
+        }
+
+        /**
+         * Use Proxy Credentials (Check Changed)
+         */
+        private void cbProxyUseCredentials_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbProxyUseCredentials.Checked)
+            {
+                txtProxyUsername.Enabled = true;
+                txtProxyPassword.Enabled = true;
+            }
+            else
+            {
+                txtProxyUsername.Enabled = false;
+                txtProxyPassword.Enabled = false;
+            }
+        }
+
+        /**
+        * Test Proxy My IP
+        */
+        private void btTestMyIpWithProxy_Click(object sender, EventArgs e)
+        {
+            // Save settings
+            Properties.Settings.Default.Save();
+
+            try
+            {
+                using (var client = new System.Net.WebClient())
+                {
+                    if (Properties.Settings.Default.UseProxy)
+                    {
+                        client.Proxy = Helper.getProxy();
+                    }
+
+                    MessageBox.Show("My IP with the proxy is: " + client.DownloadString("http://bot.whatismyipaddress.com/"), "My IP");
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Something might be wrong with the proxy, try another one.", "Error connecting");
             }
         }
     }

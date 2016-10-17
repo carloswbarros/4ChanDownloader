@@ -6,9 +6,9 @@ New ideas, improvements or bug fix's are always welcome.
 # Features
 - Download threads (all files and page)
 - Download boards
-- Check for changes on the threads and boards
+- Watch for changes on the threads and boards
 - Ability to save the URL's when the application is closed
-- Proxy support (coming soon)
+- Proxy support
 - Easy to customize and use
 
 # Releases
@@ -20,7 +20,7 @@ New ideas, improvements or bug fix's are always welcome.
 # TODO
 - [x] The ability of choosing to minimize normally or to the system tray (taskbar)
 - [x] Improve download page by downloading the thumbnails and change the urls to work local
-- [ ] Proxy support
+- [x] Proxy support
 - [ ] Organize the download of boards by creating a small database
 
 # License

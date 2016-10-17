@@ -79,7 +79,12 @@ namespace _4ChanDownloader
             Directory.CreateDirectory(Path.Combine(this.getOutputDir(), "thumbnails"));
 
             // Download json thread
-            string json = new WebClient().DownloadString("http://a.4cdn.org/" + this.board + "/thread/" + this.id + ".json");
+            WebClient client = new WebClient();
+            if (Properties.Settings.Default.UseProxy)
+            {
+                client.Proxy = Helper.getProxy();
+            }
+            string json = client.DownloadString("http://a.4cdn.org/" + this.board + "/thread/" + this.id + ".json");
             JObject data = JObject.Parse(json);
 
             // Update title in the gui
@@ -196,6 +201,11 @@ namespace _4ChanDownloader
             string download_url = "http://i.4cdn.org/"+this.board+"/"+ file_name;
             using (var client = new WebClient())
             {
+                if (Properties.Settings.Default.UseProxy)
+                {
+                    client.Proxy = Helper.getProxy();
+                }
+
                 client.DownloadFile(download_url, Path.Combine(this.getOutputDir(), output));
             }
         }
@@ -209,6 +219,11 @@ namespace _4ChanDownloader
             {
                 using (var client = new WebClient())
                 {
+                    if (Properties.Settings.Default.UseProxy)
+                    {
+                        client.Proxy = Helper.getProxy();
+                    }
+
                     var html_page = client.DownloadString(this.url);
 
                     // Add http to all links (without this "file://" would be added by the browser)
