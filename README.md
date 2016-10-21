@@ -1,7 +1,11 @@
-# ![alt tag](4ChanDownloader/images/favicon.ico) 4ChanDownloader
+# ![4ChanDownloader](4ChanDownloader/images/favicon.ico) 4ChanDownloader
 Download boards and threads from 4Chan. (Images/Webms/HTML Page)
 
 New ideas, improvements or bug fix's are always welcome.
+
+# Screenshots
+![Main](screenshots/main.png)
+![Settings](screenshots/settings.png)
 
 # Features
 - Download threads (all files and page)
@@ -12,7 +16,8 @@ New ideas, improvements or bug fix's are always welcome.
 - Easy to customize and use
 
 # Releases
-[1.0.0 - 4ChanDownloader](https://github.com/carloswbarros/4ChanDownloader/releases/tag/1.0.0)
+[4ChanDownloader - 1.1.0](https://github.com/carloswbarros/4ChanDownloader/releases/tag/1.1.0)
+[4ChanDownloader - 1.0.0](https://github.com/carloswbarros/4ChanDownloader/releases/tag/1.0.0)
 
 # Required packages
 - Newtonsoft.Json
