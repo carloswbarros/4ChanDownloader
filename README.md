@@ -5,7 +5,7 @@ New ideas, improvements or bug fix's are always welcome.
 
 # Screenshots
 ![Main](screenshots/main.png)
-![Settings](screenshots/settings.png)
+![Settings](screenshots/settings.png=x250)
 
 # Features
 - Download threads (all files and page)
