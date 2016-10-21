@@ -5,7 +5,7 @@ New ideas, improvements or bug fix's are always welcome.
 
 # Screenshots
 ![Main](screenshots/main.png)
-![Settings](screenshots/settings.png =250x)
+<img src="screenshots/settings.png" alt="Settings" width="258" height="277">
 
 # Features
 - Download threads (all files and page)
