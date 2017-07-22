@@ -1,3 +1,6 @@
+##### **NOTE!!** NOT BEING MAINTAINED ANYMORE!  
+------------------------------------
+
 # ![4ChanDownloader](4ChanDownloader/images/favicon.ico) 4ChanDownloader
 Download boards and threads from 4Chan. (Images/Webms/HTML Page)
 
